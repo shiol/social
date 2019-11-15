@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro de usuário</title>
+
+</head>
+
+<body>
+	<p>
+		<a href="index.html">Início</a>
+	</p>
+
+	<form action="UsuarioCadastro">
+
+		<table>
+			<tr>
+				<td><label for="nome">Nome: </label></td>
+				<td><input type="text" id="nome" name="nome"></td>
+			</tr>
+			<tr>
+				<td><label for="email">E-mail: </label></td>
+				<td><input type="email" id="email" name="email"></td>
+			</tr>
+			<tr>
+				<td><label for="login">Login: </label></td>
+				<td><input type="text" id="login" name="login"></td>
+			</tr>
+			<tr>
+				<td><label for="senha">Senha: </label></td>
+				<td><input type="password" id="senha" name="senha"></td>
+			</tr>
+			<tr>
+				<td><label for="nascimento">Nascimento: </label></td>
+				<td><input type="date" id="nascimento" name="nascimento"></td>
+			</tr>
+			<tr>
+				<td>Gênero:</td>
+				<td><input type="radio" id="masculino" name="gender"
+					value="Masculino"><label for="masculino">Masculino</label></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="radio" id="feminino" name="gender"
+					value="Feminino"><label for="feminino">Feminino</label></td>
+			</tr>
+		</table>
+		<input type="submit" value="Cadastrar">
+	</form>
+
+</body>
+</html>
