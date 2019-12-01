@@ -1,4 +1,4 @@
-package data;
+package test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("social");
 		EntityManager em = emf.createEntityManager();
 
 		Usuario usuario = new Usuario();
@@ -19,7 +19,7 @@ public class Test {
 		usuario.senha = "jose";
 
 		em.getTransaction().begin();
-		em.persist(usuario);
+		em.merge(usuario);
 		em.getTransaction().commit();
 		em.close();
 	}
