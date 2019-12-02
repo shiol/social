@@ -11,33 +11,30 @@ import domain.Usuario;
 
 public class UsuarioController {
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("social");
-	EntityManager em = emf.createEntityManager();
+	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("social");
+	static EntityManager em = emf.createEntityManager();
 
-	public void save(Usuario u) {
+	public static void save(Usuario u) {
 		em.getTransaction().begin();
 		em.merge(u);
 		em.getTransaction().commit();
-		emf.close();
 	}
 
-	public List<Usuario> get(Usuario u) {
+	public static List<Usuario> get(Usuario u) {
 		em.getTransaction().begin();
 		if (u == null) {
-			var q = em.createQuery("select usuario from usuarios");
+			var q = em.createQuery("select usuario from usuarios usuario");
 			var lista = q.getResultList();
 			em.getTransaction().commit();
-			emf.close();
 			return lista;
 		} else {
-			var q = em.createQuery("select usuario from usuarios where id = " + u.id);
+			var q = em.createQuery("select usuario from usuarios usuario where usuario.id = " + u.id);
 			var lista = q.getResultList();
-			emf.close();
 			return lista;
 		}
 	}
 
-	public void delete(Usuario u) {
+	public static void delete(Usuario u) {
 		em.getTransaction().begin();
 		Query q = em.createNativeQuery("delete usuario from usuarios where id = " + u.id);
 		em.getTransaction().commit();
