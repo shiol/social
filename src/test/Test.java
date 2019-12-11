@@ -1,6 +1,7 @@
 package test;
 
 import java.util.Calendar;
+import java.util.List;
 
 import controller.UsuarioController;
 import data.Util;
@@ -23,6 +24,30 @@ public class Test {
 
 		UsuarioController.save(usuario);
 
-		UsuarioController.get(null);
+		List<Usuario> result = UsuarioController.get(null);
+		for (Usuario u : result) {
+			System.out.println(u.id);
+			System.out.println(u.nome);
+			System.out.println(u.email);
+			System.out.println(u.login);
+			System.out.println(u.dataNascimento);
+			System.out.println(u.genero);
+			System.out.println();
+		}
+
+		var t = new Usuario();
+		t.id = result.get(0).id;
+		result = UsuarioController.get(t);
+		for (Usuario u : result) {
+			System.out.println(u.id);
+			System.out.println(u.nome);
+			System.out.println(u.email);
+			System.out.println(u.login);
+			System.out.println(u.dataNascimento);
+			System.out.println(u.genero);
+			System.out.println();
+		}
+
+		UsuarioController.delete(t);
 	}
 }

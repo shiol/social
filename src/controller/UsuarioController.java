@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import domain.Usuario;
 
@@ -20,24 +19,23 @@ public class UsuarioController {
 		em.getTransaction().commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	public static List<Usuario> get(Usuario u) {
-		em.getTransaction().begin();
+		List<Usuario> lista;
 		if (u == null) {
-			var q = em.createQuery("select usuario from usuarios usuario");
-			var lista = q.getResultList();
-			em.getTransaction().commit();
-			return lista;
+			var result = em.createQuery("from Usuario u");
+			lista = result.getResultList();
 		} else {
-			var q = em.createQuery("select usuario from usuarios usuario where usuario.id = " + u.id);
-			var lista = q.getResultList();
-			return lista;
+			var result = em.createQuery("from Usuario u where u.id = " + u.id);
+			lista = result.getResultList();
 		}
+		return lista;
 	}
 
 	public static void delete(Usuario u) {
 		em.getTransaction().begin();
-		Query q = em.createNativeQuery("delete usuario from usuarios where id = " + u.id);
+		var result = em.find(Usuario.class, u.id);
+		em.remove(result);
 		em.getTransaction().commit();
-		emf.close();
 	}
 }

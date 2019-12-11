@@ -38,7 +38,7 @@ public class UsuarioLista extends HttpServlet {
 				printer.println("nome: " + result.getString("nome") + "<br>");
 				printer.println("e-mail: " + result.getString("email") + "<br>");
 				printer.println("login: " + result.getString("login") + "<br>");
-				printer.println("nascimento: " + result.getDate("nascimento") + "<br>");
+				printer.println("nascimento: " + result.getDate("dataNascimento") + "<br>");
 				printer.println("gênero: " + result.getString("genero") + "<br>");
 				printer.println("<br>");
 			}
